@@ -75,7 +75,11 @@ class App extends React.Component {
           <h2>To-Do List!</h2>
             <TodoForm handleAddTask={this.handleAddTask} />
         </div>
-        
+        <TodoList 
+          clearTasks={this.clearTasks} 
+          handleToggleTask={this.handleToggleTask}
+          todo={this.state.todo}
+        />
       </div>
     );
   }
