@@ -60,9 +60,13 @@ class App extends React.Component {
       completed: false,
     }
     this.setState({
-        tasks: [...this.state.todo, newTask]
+        todo: [...this.state.todo, newTask]
     });
     console.log(newTask)
+    //Set state of text box back to ""
+    // this.setState({
+    //   input: "",
+    // })
   };
 
   //Clear completed tasks
