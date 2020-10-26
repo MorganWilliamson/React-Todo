@@ -3,10 +3,8 @@
 //   - All of your `handler` functions should live here on `<App />`.
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 //component imports
 import TodoList from "./components/TodoList";
-import Todo from "./components/Todo";
 import TodoForm from "./components/TodoForm";
 
 //Starting To-Do list: 
@@ -39,6 +37,7 @@ class App extends React.Component {
     this.setState({
       todo: this.state.todo.map(task => {
         if(task.id === taskID) {
+          console.log("Toggled!")
           return {
             ...task, 
             completed: !task.completed,
@@ -51,18 +50,21 @@ class App extends React.Component {
   };
 
   //Add new task
-  handleAddTask = (task) => {
+  handleAddTask = (event, task) => {
+    event.preventDefault(); 
+    const newTask = {
+      task: task,
+      id: Date.now(),
+      completed: false,
+    }
     this.setState({
-      todo: [...this.state.todo, {
-        task: task,
-        id: Date.now(),
-        completed: false,
-      }]
+        tasks: [...this.state.todo, newTask]
     });
   };
 
   //Clear completed tasks
-  clearTasks = () => {
+  clearTasks = (event) => {
+    event.preventDefault();
     this.setState({
       todo: this.state.todo.filter(task => (!task.completed))
     });
@@ -73,10 +75,9 @@ class App extends React.Component {
       <div className="App">
         <div className="header">
           <h2>To-Do List!</h2>
-            <TodoForm handleAddTask={this.handleAddTask} />
+            <TodoForm handleAddTask={this.handleAddTask} clearTasks={this.clearTasks} />
         </div>
         <TodoList 
-          clearTasks={this.clearTasks} 
           handleToggleTask={this.handleToggleTask}
           todo={this.state.todo}
         />

@@ -8,22 +8,28 @@ class TodoForm extends React.Component {
     constructor() {
         super(); 
         this.state = {
-            input: "",
+            task: "",
         }
     }
 
     //update state
     handleChanges = event => {
         this.setState({
-            input:event.target.value,
+            input: event.target.value,
         });
     };
 
     //handle submit
     handleSubmit = event => {
-        event.preventDefault();
-        this.props.handleAddItem(this.state.input);
+        this.setState({ task: "" });
+        this.props.handleAddItem(event, this.state.task);
     };
+
+    //handle clear
+    clearTasks = (event) => {
+        event.preventDefault();
+        this.props.clearTasks(event);
+      };
 
     render() {
         return (
@@ -35,8 +41,11 @@ class TodoForm extends React.Component {
                     name="task"
                 />
                 <button>Add Task</button>
+                
+                <button onClick={this.clearTasks} className="clearBtn">
+                    Clear Completed Tasks
+                </button>
             </form>
-            //Create button for clearing completed tasks
         )
     }
 }
