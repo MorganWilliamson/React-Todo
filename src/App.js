@@ -53,13 +53,14 @@ class App extends React.Component {
   handleAddTask = (event, task) => {
     event.preventDefault(); 
     const newTask = {
-      task: task,
+      task: event.target.task.value,
       id: Date.now(),
       completed: false,
     }
     this.setState({
         tasks: [...this.state.todo, newTask]
     });
+    console.log(newTask)
   };
 
   //Clear completed tasks

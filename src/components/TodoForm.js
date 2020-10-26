@@ -22,7 +22,7 @@ class TodoForm extends React.Component {
     //handle submit
     handleSubmit = event => {
         this.setState({ task: "" });
-        this.props.handleAddItem(event, this.state.task);
+        this.props.handleAddTask(event, this.state.task);
     };
 
     //handle clear
