@@ -4,6 +4,10 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+//component imports
+import TodoList from "./components/TodoList";
+import Todo from "./components/Todo";
+import TodoForm from "./components/TodoForm";
 
 //Starting To-Do list: 
 const todo = [
@@ -66,8 +70,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>To-Do List!</h2>
+      <div className="App">
+        <div className="header">
+          <h2>To-Do List!</h2>
+            <TodoForm handleAddTask={this.handleAddTask} />
+        </div>
+        
       </div>
     );
   }
