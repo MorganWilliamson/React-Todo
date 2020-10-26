@@ -6,6 +6,8 @@ import React from 'react';
 //component imports
 import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
+//stylesheet import
+import "./components/Todo.css"
 
 //Starting To-Do list: 
 const todo = [
@@ -37,7 +39,7 @@ class App extends React.Component {
     this.setState({
       todo: this.state.todo.map(task => {
         if(task.id === taskID) {
-          console.log("Toggled!")
+          // console.log("Toggled!")
           return {
             ...task, 
             completed: !task.completed,
