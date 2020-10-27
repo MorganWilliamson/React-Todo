@@ -52,7 +52,7 @@ class App extends React.Component {
   };
 
   //Add new task
-  handleAddTask = (event, task) => {
+  handleAddTask = (event) => {
     event.preventDefault(); 
     const newTask = {
       task: event.target.task.value,
@@ -63,10 +63,6 @@ class App extends React.Component {
         todo: [...this.state.todo, newTask]
     });
     console.log(newTask)
-    //Set state of text box back to ""
-    // this.setState({
-    //   input: "",
-    // })
   };
 
   //Clear completed tasks
